@@ -1,7 +1,7 @@
 /**
  * 
  */
-package ningyuan.pan.servicex.service;
+package ningyuan.pan.servicex;
 
 /**
  * @author ningyuan
