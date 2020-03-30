@@ -14,9 +14,12 @@ import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
  *
  */
 public class ServiceXUtil {
-
+	 
 	 private ServiceXUtil() {} 
 	 
+	 /*
+	  * singleton using static inner class
+	  */
 	 private static class ServiceXUtilInstance { 
 		 private static final ServiceXUtil INSTANCE = new ServiceXUtil(); 
 	 } 
@@ -26,13 +29,13 @@ public class ServiceXUtil {
 	 private final ReadLock readLock = lock.readLock();
 	 private final WriteLock writeLock = lock.writeLock();
 	 
-	 private final Map<String, Object> context = new HashMap<String, Object>();
+	 private final Map<GlobalObjectName, Object> context = new HashMap<GlobalObjectName, Object>();
 	 
 	 public static ServiceXUtil getInstance() { 
 		 return ServiceXUtilInstance.INSTANCE; 
 	 } 
 
-	 public Object getGelobalObject(String name) {
+	 public Object getGelobalObject(GlobalObjectName name) {
 		 readLock.lock();
 		 
 		 try {
@@ -43,7 +46,7 @@ public class ServiceXUtil {
 		}
 	 }
 	 
-	 public void setGelobalObject(String name, Object value) {
+	 public void setGelobalObject(GlobalObjectName name, Object value) {
 		 writeLock.lock();
 		 
 		 try {
@@ -54,7 +57,7 @@ public class ServiceXUtil {
 		}
 	 }
 	 
-	 public boolean setIfAbsent(String name, Object value) {
+	 public boolean setIfAbsent(GlobalObjectName name, Object value) {
 		 writeLock.lock();
 		 
 		 try {
@@ -71,7 +74,7 @@ public class ServiceXUtil {
 		}
 	 }
 	 
-	 public void removeGelobalObject(String name) {
+	 public void removeGelobalObject(GlobalObjectName name) {
 		 writeLock.lock();
 		 
 		 try {
