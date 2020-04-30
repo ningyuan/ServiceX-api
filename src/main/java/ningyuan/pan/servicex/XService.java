@@ -3,6 +3,7 @@
  */
 package ningyuan.pan.servicex;
 
+
 /**
  * @author ningyuan
  *
@@ -10,5 +11,7 @@ package ningyuan.pan.servicex;
 public interface XService {
 	
 	public String getName();
+	
+	public String getAllUsers(String format);
 	
 }
