@@ -14,4 +14,5 @@ public interface XService {
 	
 	public String getAllUsers(String format);
 	
+	public String getAllRoles(String format);
 }
